@@ -1,0 +1,35 @@
+﻿<Window x:Class="PoGoLogAnalyser.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PoGoLogAnalyser"
+        xmlns:util="clr-namespace:Wpf.Util"
+        
+        mc:Ignorable="d"
+        Title="PokemonGoLogAnalyser" Height="350" Width="525">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="125"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Button Grid.Column="0" x:Name="BtnOpenFile" Content="Open Log File" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="90" Click="BtnOpenFile_Click"/>
+        <Button Grid.Column="0" x:Name="BtnClear" Content="Clear List" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top" Width="90" Click="BtnClear_Click"/>
+        <Label Grid.Column="0" x:Name="LbPokemonCount" HorizontalAlignment="Left" Margin="10,85,0,0" VerticalAlignment="Top" />
+        <ListView Grid.Column="1"  x:Name="ListView" Margin="0,0,1,0" util:GridViewSort.AutoSort="True" >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Name" Width="150" 
+                                    DisplayMemberBinding="{Binding Path=Name}"
+                                    util:GridViewSort.PropertyName="Name"/>
+                    <GridViewColumn Header="CP" Width="80" 
+                                    DisplayMemberBinding="{Binding Path=Cp}"
+                                    util:GridViewSort.PropertyName="Cp"/>
+                    <GridViewColumn Header="IV" Width="80" 
+                                    DisplayMemberBinding="{Binding Path=Iv}"
+                                    util:GridViewSort.PropertyName="Iv"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>
